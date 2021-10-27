@@ -1,4 +1,4 @@
-package com.bobo.binaryTree;
+package com.bobo.binarytree.threadedbinarytree;
 
 /**
  * @Description 二叉树数据结构
@@ -11,9 +11,31 @@ public class HeroNode {
     private HeroNode left; //默认空
     private HeroNode right; //默认空
 
+    //说明
+    //1、如果leftType==0表示指向的是左子树，如果是1表示指向前驱节点
+    //2、如果rightType==0表示指向右子树，如果是1表示指向后继节点
+    private int leftType;
+    private int rightType;
+
     public HeroNode(int no, String name) {
         this.no = no;
         this.name = name;
+    }
+
+    public int getLeftType() {
+        return leftType;
+    }
+
+    public void setLeftType(int leftType) {
+        this.leftType = leftType;
+    }
+
+    public int getRightType() {
+        return rightType;
+    }
+
+    public void setRightType(int rightType) {
+        this.rightType = rightType;
     }
 
     public int getNo() {
@@ -54,40 +76,5 @@ public class HeroNode {
                 "no=" + no +
                 ", name='" + name + '\'' +
                 '}';
-    }
-
-    //编写前序遍历方法
-    public void preOrder() {
-        System.out.println(this);//先输出父节点
-        //递归向左子树前序遍历
-        if (this.left != null) {
-            this.left.preOrder();
-        }
-        //递归向右子树前序遍历
-        if (this.right != null) {
-            this.right.preOrder();
-        }
-    }
-
-    //遍历中序遍历方法
-    public void middleOrder() {
-        if (this.left != null) {
-            this.left.middleOrder();
-        }
-        System.out.println(this);
-        if (this.right != null) {
-            this.right.middleOrder();
-        }
-    }
-
-    //遍历后序遍历方法
-    public void postOrder() {
-        if (this.left != null) {
-            this.left.postOrder();
-        }
-        if (this.right != null) {
-            this.right.postOrder();
-        }
-        System.out.println(this);
     }
 }
